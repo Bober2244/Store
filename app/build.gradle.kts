@@ -53,6 +53,10 @@ android {
     room {
         schemaDirectory("$projectDir/schemas")
     }
+
+    ksp {
+        arg("KOIN_CONFIG_CHECK","true")
+    }
 }
 
 dependencies {
@@ -71,6 +75,7 @@ dependencies {
     //Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
     //Room
     implementation(libs.bundles.room)
     ksp(libs.room.compiler)
@@ -83,4 +88,6 @@ dependencies {
     //TODO: implementation(libs.converter.gson)
     //Serialization
     implementation(libs.kotlinx.serialization.json)
+    //DataStore
+    implementation(libs.data.store)
 }

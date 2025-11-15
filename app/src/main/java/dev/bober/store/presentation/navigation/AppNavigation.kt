@@ -5,6 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import dev.bober.store.presentation.home.HomeScreen
 import dev.bober.store.presentation.onboarding.OnboardingScreen
 import dev.bober.store.presentation.navigation.destinations.CategoriesGraph
 import dev.bober.store.presentation.navigation.destinations.CategoriesRoute
@@ -34,10 +35,7 @@ fun NavGraphBuilder.homeGraph(
 ) {
     navigation<HomeGraph>(startDestination = HomeRoute) {
         composable<HomeRoute> {
-            //TODO: Home screen
-            Text(
-                text = "Home"
-            )
+            HomeScreen()
         }
     }
 }

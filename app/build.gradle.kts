@@ -90,4 +90,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     //DataStore
     implementation(libs.data.store)
+    //Showcase
+    implementation(libs.showcase)
 }

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Vk Store</string>
+    <color name="app_icon_background">#FFFFFF</color>
 </resources>

@@ -1,17 +1,23 @@
 package dev.bober.store.presentation.home
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Update
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.bober.store.data.DataStoreManager
+import dev.bober.store.domain.AppModel
+import dev.bober.store.domain.CategoryModel
 import dev.bober.store.utils.Constants
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val dataStore: DataStoreManager
-): ViewModel() {
+) : ViewModel() {
     val isFirstLaunch = dataStore.getBooleanFlow(Constants.IS_FIRST_LAUNCH)
         .map {
             it ?: true
@@ -27,4 +33,19 @@ class HomeViewModel(
             dataStore.saveBoolean(Constants.IS_FIRST_LAUNCH, false)
         }
     }
+
+    val mutableCategories = MutableStateFlow(listOf(CategoryModel("финансы")))
+    val categories = mutableCategories.asStateFlow()
+
+    val mutableApps = MutableStateFlow(
+        value = listOf(
+            AppModel(
+                name = "Сбер",
+                rating = 4.8,
+                category = "Финансы",
+                icon = Icons.Default.Update
+            )
+        )
+    )
+    val apps = mutableApps.asStateFlow()
 }

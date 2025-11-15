@@ -14,6 +14,7 @@ private val DarkColorScheme = darkColorScheme(
     primaryContainer = ColorLightBlue,
     onPrimaryContainer = Color.White,
     secondary = Color(0xFF252525),
+    tertiary = Color.White
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -22,6 +23,7 @@ private val LightColorScheme = lightColorScheme(
     primaryContainer = ColorLightBlue,
     onPrimaryContainer = Color.White,
     secondary = Color(0xFFABABAB),
+    tertiary = Color.Black,
 )
 
 @Composable

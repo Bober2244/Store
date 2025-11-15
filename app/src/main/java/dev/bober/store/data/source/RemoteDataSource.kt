@@ -33,7 +33,7 @@ class RemoteDataSource(
         api.getTags()
     }
 
-    fun downloadApp(context: Context, appId: String, fileName: String) {
+    fun downloadApp(context: Context, appId: String, fileName: String): Long {
         val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
 
         val request = DownloadManager.Request("${Constants.BASE_URL}/api/apps/${appId}/download".toUri()).apply {
@@ -44,7 +44,7 @@ class RemoteDataSource(
             setDescription("Пожалуйста, подождите")
             setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, "$fileName.apk")
         }
-        downloadManager.enqueue(request)
+        return downloadManager.enqueue(request)
     }
 
     companion object {

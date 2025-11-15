@@ -38,10 +38,11 @@ class RemoteDataSource(
 
         val request = DownloadManager.Request("${Constants.BASE_URL}/api/apps/${appId}/download".toUri()).apply {
             setMimeType(MIME_TYPE)
+            setAllowedOverMetered(true)
             setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             setTitle("Скачивание $fileName")
-            setDescription("")
-            setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "$fileName.apk")
+            setDescription("Пожалуйста, подождите")
+            setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, "$fileName.apk")
         }
         downloadManager.enqueue(request)
     }

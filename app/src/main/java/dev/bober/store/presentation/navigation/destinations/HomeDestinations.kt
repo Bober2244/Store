@@ -7,7 +7,9 @@ import kotlinx.serialization.Serializable
 object HomeGraph
 
 @Serializable
-object HomeRoute
+data class HomeRoute(
+    val selectedTag: String? = null
+)
 
 @Serializable
 data class AppDetailsRoute(

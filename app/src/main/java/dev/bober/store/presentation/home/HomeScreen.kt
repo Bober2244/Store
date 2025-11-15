@@ -77,6 +77,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun HomeScreen(
     onAppClick: (AppModel) -> Unit,
+    selectedTag: String?,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = koinViewModel()
 ) {
@@ -194,7 +195,7 @@ fun HomeScreen(
                 )
 
                 val tags by viewModel.tags.collectAsState()
-                var currentTag by remember { mutableStateOf<String?>(null) }
+                var currentTag by remember { mutableStateOf(selectedTag) }
                 when (tags) {
                     is Resource.Success -> {
                         LazyRow(
@@ -265,7 +266,11 @@ fun HomeScreen(
                             TextButton(
                                 onClick = {
                                     viewModel.getTags()
-                                }
+                                },
+                                colors = ButtonDefaults.textButtonColors(
+                                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
                             ) {
                                 Text(
                                     text = "Згрузить теги"

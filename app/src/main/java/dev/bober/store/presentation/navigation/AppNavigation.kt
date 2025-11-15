@@ -1,22 +1,22 @@
 package dev.bober.store.presentation.navigation
 
-import androidx.compose.material3.Text
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import androidx.navigation.toRoute
 import dev.bober.store.domain.AppModel
+import dev.bober.store.presentation.categories.CategoriesScreen
 import dev.bober.store.presentation.home.HomeScreen
 import dev.bober.store.presentation.home.details.AppDetailsScreen
 import dev.bober.store.presentation.navigation.destinations.AppDetailsRoute
-import dev.bober.store.presentation.onboarding.OnboardingScreen
 import dev.bober.store.presentation.navigation.destinations.CategoriesGraph
 import dev.bober.store.presentation.navigation.destinations.CategoriesRoute
 import dev.bober.store.presentation.navigation.destinations.HomeGraph
 import dev.bober.store.presentation.navigation.destinations.HomeRoute
 import dev.bober.store.presentation.navigation.destinations.OnboardingGraph
 import dev.bober.store.presentation.navigation.destinations.OnboardingRoute
+import dev.bober.store.presentation.onboarding.OnboardingScreen
 import dev.bober.store.presentation.utils.serializableNavType
 import kotlin.reflect.typeOf
 
@@ -39,9 +39,11 @@ fun NavGraphBuilder.onboardingGraph(navController: NavController) {
 fun NavGraphBuilder.homeGraph(
     navController: NavController
 ) {
-    navigation<HomeGraph>(startDestination = HomeRoute) {
+    navigation<HomeGraph>(startDestination = HomeRoute()) {
         composable<HomeRoute> {
+            val homeRoute = it.toRoute<HomeRoute>()
             HomeScreen(
+                selectedTag = homeRoute.selectedTag,
                 onAppClick = {
                     navController.navigate(AppDetailsRoute(it))
                 }
@@ -69,9 +71,10 @@ fun NavGraphBuilder.categoriesGraph(
 ) {
     navigation<CategoriesGraph>(startDestination = CategoriesRoute) {
         composable<CategoriesRoute> {
-            //TODO: Categories screen
-            Text(
-                text = "Categories"
+            CategoriesScreen(
+                onCategoryClick = {
+                    navController.navigate(HomeRoute(it))
+                }
             )
         }
     }

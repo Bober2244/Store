@@ -1,4 +1,4 @@
-package dev.bober.store.data
+package dev.bober.store.data.utils
 
 import android.util.Log
 import androidx.datastore.core.DataStore

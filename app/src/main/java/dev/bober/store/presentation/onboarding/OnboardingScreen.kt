@@ -67,15 +67,16 @@ fun OnboardingScreen(
                     )
                 }
                 Text(
-                    text = "Добро пожаловать в RuStore!",
+                    text = "Добро пожаловать в VkStore!",
                     fontSize = 30.sp,
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
-                    lineHeight = 32.sp
+                    lineHeight = 32.sp,
+                    color = MaterialTheme.colorScheme.tertiary
                 )
                 Text(
                     text = "Откройте для себя мир российских приложений",
-                    color = Color.LightGray,
+                    color = MaterialTheme.colorScheme.secondaryContainer,
                     textAlign = TextAlign.Center
                 )
             }
@@ -93,16 +94,19 @@ fun OnboardingScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Explore,
-                    contentDescription = null
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(50.dp)
                 )
                 Text(
                     text = "Исследуйте мир приложений",
                     fontSize = 20.sp,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.tertiary
                 )
                 Text(
                     text = "Найдите эксклюзивные российские приложение и игры, доступные только здесь.",
-                    color = Color.LightGray,
+                    color = MaterialTheme.colorScheme.secondaryContainer,
                     textAlign = TextAlign.Center
                 )
             }

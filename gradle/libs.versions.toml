@@ -14,10 +14,13 @@ koin = "4.1.1"
 ksp = "2.3.2"
 kotlinSerialization = "1.9.0"
 retrofit = "3.0.0"
+loggingInterceptor = "4.12.0"
 composeNavigation = "2.9.6"
 kotlinxCorutuines = "1.10.2"
 dataStore = "1.1.7"
 showcase = "2.0.2"
+coil = "3.3.0"
+workManager = "2.11.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,15 +48,22 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
 koin-android = { module = "io.insert-koin:koin-android" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose"}
+koin-work-manager = { module = "io.insert-koin:koin-androidx-workmanager" }
 
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinSerialization" }
 
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
 
 data-store = { module = "androidx.datastore:datastore-preferences", version.ref = "dataStore" }
 
 showcase = { module = "com.canopas.intro-showcase-view:introshowcaseview", version.ref = "showcase" }
+
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-network = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
+
+work-manager = { module = "androidx.work:work-runtime-ktx", version.ref = "workManager" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

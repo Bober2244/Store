@@ -76,6 +76,7 @@ dependencies {
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.work.manager)
     //Room
     implementation(libs.bundles.room)
     ksp(libs.room.compiler)
@@ -85,11 +86,17 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     //Retrofit
     implementation(libs.retrofit)
-    //TODO: implementation(libs.converter.gson)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
     //Serialization
     implementation(libs.kotlinx.serialization.json)
     //DataStore
     implementation(libs.data.store)
     //Showcase
     implementation(libs.showcase)
+    //Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network)
+    //WorkManager
+    implementation(libs.work.manager)
 }

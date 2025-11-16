@@ -2,12 +2,12 @@ package dev.bober.store.data.api
 
 import dev.bober.store.data.dto.apps.AppsListDto
 import dev.bober.store.data.dto.apps.TagDto
-import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
-import retrofit2.http.Streaming
 
 interface AppsApi {
     @GET("/api/apps")
@@ -22,9 +22,15 @@ interface AppsApi {
     @GET("/api/tags")
     suspend fun getTags(): Response<TagDto>
 
-    @Streaming
-    @GET("/api/apps/{app_id}/download")
-    suspend fun downloadApk(
-        @Path("app_id") appId: String,
-    ): Response<ResponseBody>
+    @POST("/api/apps/{app_id}/downloaded")
+    suspend fun apkDownloaded(
+        @Header("Authorization") token: String,
+        @Path("app_id") appId: String
+    ): Response<Unit>
+
+    @POST("/api/apps/{app_id}/view")
+    suspend fun appViewed(
+        @Header("Authorization") token: String,
+        @Path("app_id") appId: String
+    ): Response<Unit>
 }

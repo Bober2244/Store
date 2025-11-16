@@ -35,6 +35,14 @@ class AppsRepository(
         }
     }
 
+    suspend fun appViewed(
+        appId: String,
+        token: String
+    ) {
+        source.appViewed(appId, token)
+    }
+
+
     suspend fun getTags(): Resource<TagModel> {
         return when (val res = source.getTags()) {
             is Resource.Error -> Resource.Error(res.code, res.error)
@@ -43,9 +51,10 @@ class AppsRepository(
         }
     }
 
-    fun downloadApp(
+    suspend fun downloadApp(
         context: Context,
         appId: String,
-        fileName: String
-    ) = source.downloadApp(context, appId, fileName)
+        fileName: String,
+        token: String,
+    ) = source.downloadApp(context, appId, fileName, token)
 }

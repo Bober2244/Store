@@ -38,7 +38,23 @@ class RemoteDataSource(
         api.getTags()
     }
 
-    fun downloadApp(context: Context, appId: String, fileName: String): Long {
+    suspend fun appViewed(
+        appId: String,
+        token: String,
+    ) = safeApiResponse {
+        api.appViewed(
+            token = token,
+            appId = appId
+        )
+    }
+
+    suspend fun downloadApp(
+        context: Context,
+        appId: String,
+        fileName: String,
+        token: String,
+    ): Long {
+        safeApiResponse{ api.apkDownloaded(token = token, appId = appId) }
         val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
 
         val request =

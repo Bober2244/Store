@@ -165,7 +165,9 @@ fun LoginScreen(
                 )
             }
         }
-        SendingState.ERROR -> {}
+        SendingState.ERROR -> {
+            buttonsEnabled = true
+        }
         SendingState.SUCCESS -> navigateToHome()
     }
 }

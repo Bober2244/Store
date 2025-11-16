@@ -1,9 +1,7 @@
-package dev.bober.store.data.dto
+package dev.bober.store.data.dto.apps
 
 import androidx.annotation.Keep
-import com.google.gson.annotations.SerializedName
 import dev.bober.store.domain.AppsListModel
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Keep

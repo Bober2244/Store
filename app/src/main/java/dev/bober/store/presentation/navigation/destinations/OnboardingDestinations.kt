@@ -7,3 +7,9 @@ object OnboardingGraph
 
 @Serializable
 object OnboardingRoute
+
+@Serializable
+object RegistrationRoure
+
+@Serializable
+object LoginRoute

@@ -14,9 +14,13 @@ import dev.bober.store.presentation.navigation.destinations.CategoriesGraph
 import dev.bober.store.presentation.navigation.destinations.CategoriesRoute
 import dev.bober.store.presentation.navigation.destinations.HomeGraph
 import dev.bober.store.presentation.navigation.destinations.HomeRoute
+import dev.bober.store.presentation.navigation.destinations.LoginRoute
 import dev.bober.store.presentation.navigation.destinations.OnboardingGraph
 import dev.bober.store.presentation.navigation.destinations.OnboardingRoute
+import dev.bober.store.presentation.navigation.destinations.RegistrationRoure
+import dev.bober.store.presentation.onboarding.LoginScreen
 import dev.bober.store.presentation.onboarding.OnboardingScreen
+import dev.bober.store.presentation.onboarding.RegistrationScreen
 import dev.bober.store.presentation.utils.serializableNavType
 import kotlin.reflect.typeOf
 
@@ -25,11 +29,28 @@ fun NavGraphBuilder.onboardingGraph(navController: NavController) {
         composable<OnboardingRoute> {
             OnboardingScreen(
                 onNextClick = {
+                    navController.navigate(RegistrationRoure)
+                }
+            )
+        }
+        composable<RegistrationRoure> {
+            RegistrationScreen(
+                toLogin = {
+                    navController.navigate(LoginRoute)
+                }
+            )
+        }
+        composable<LoginRoute> {
+            LoginScreen(
+                navigateToHome = {
                     navController.navigate(HomeGraph) {
                         popUpTo(HomeGraph) {
                             inclusive = true
                         }
                     }
+                },
+                onRegisterClick = {
+                    navController.navigate(RegistrationRoure)
                 }
             )
         }

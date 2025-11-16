@@ -1,7 +1,7 @@
 package dev.bober.store.data.api
 
-import dev.bober.store.data.dto.AppsListDto
-import dev.bober.store.data.dto.TagDto
+import dev.bober.store.data.dto.apps.AppsListDto
+import dev.bober.store.data.dto.apps.TagDto
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.GET

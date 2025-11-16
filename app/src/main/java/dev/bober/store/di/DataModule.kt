@@ -10,7 +10,9 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dev.bober.store.data.utils.DataStoreManager
 import dev.bober.store.data.api.AppsApi
+import dev.bober.store.data.api.AuthApi
 import dev.bober.store.data.repository.AppsRepository
+import dev.bober.store.data.repository.OnboardingRepository
 import dev.bober.store.data.source.RemoteDataSource
 import dev.bober.store.utils.Constants
 import okhttp3.Cache
@@ -69,6 +71,11 @@ val dataModule = module {
         get<Retrofit>().create(AppsApi::class.java)
     }
 
+    single<AuthApi> {
+        get<Retrofit>().create(AuthApi::class.java)
+    }
+
     factoryOf(::RemoteDataSource)
     factoryOf(::AppsRepository)
+    factoryOf(::OnboardingRepository)
 }

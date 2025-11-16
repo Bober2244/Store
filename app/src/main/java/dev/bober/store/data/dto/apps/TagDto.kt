@@ -1,4 +1,4 @@
-package dev.bober.store.data.dto
+package dev.bober.store.data.dto.apps
 
 import androidx.annotation.Keep
 import dev.bober.store.domain.TagModel

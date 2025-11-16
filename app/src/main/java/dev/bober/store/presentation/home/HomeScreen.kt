@@ -273,7 +273,7 @@ fun HomeScreen(
                                 )
                             ) {
                                 Text(
-                                    text = "Згрузить теги"
+                                    text = "Загрузить теги"
                                 )
                             }
                         }

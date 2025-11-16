@@ -38,6 +38,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -54,6 +55,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 import coil3.compose.AsyncImagePainter
 import coil3.compose.SubcomposeAsyncImage
@@ -63,6 +65,7 @@ import coil3.request.crossfade
 import dev.bober.store.domain.AppModel
 import dev.bober.store.presentation.utils.shimmerEffect
 import dev.bober.store.utils.Constants
+import kotlinx.coroutines.delay
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -76,6 +79,13 @@ fun AppDetailsScreen(
     val context = LocalContext.current
     var showGallery by remember { mutableStateOf(false) }
     var selectedImageIndex by remember { mutableStateOf(0) }
+    val token by viewModel.token.collectAsState()
+
+    LaunchedEffect(Unit) {
+        delay(1000)
+        viewModel.saveAppId(app.appId)
+        viewModel.appViewed(app.appId.toString(), token ?: "")
+    }
 
     Box(modifier = modifier.fillMaxSize()) {
         Scaffold(
@@ -374,7 +384,8 @@ fun AppDetailsScreen(
                         viewModel.downloadApp(
                             context = context,
                             appId = app.appId.toString(),
-                            fileName = app.name
+                            fileName = app.name,
+                            token = token ?: "",
                         )
                     },
                     colors = ButtonDefaults.textButtonColors(

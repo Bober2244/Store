@@ -5,7 +5,9 @@ import androidx.lifecycle.viewModelScope
 import dev.bober.store.data.utils.DataStoreManager
 import dev.bober.store.di.dataModule
 import dev.bober.store.presentation.navigation.destinations.AppDetailsRoute
+import dev.bober.store.presentation.navigation.destinations.LoginRoute
 import dev.bober.store.presentation.navigation.destinations.OnboardingRoute
+import dev.bober.store.presentation.navigation.destinations.RegistrationRoure
 import dev.bober.store.utils.Constants
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.SharingStarted
@@ -29,5 +31,7 @@ class MainViewModel(
     val bottomBarHiddenRoutes = listOf(
         OnboardingRoute::class.qualifiedName,
         AppDetailsRoute::class.qualifiedName,
+        RegistrationRoure::class.qualifiedName,
+        LoginRoute::class.qualifiedName,
     )
 }

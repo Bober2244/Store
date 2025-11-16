@@ -1,14 +1,16 @@
-package dev.bober.store.data.dto
+package dev.bober.store.data.dto.apps
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
-import dev.bober.store.domain.AppModel
+import dev.bober.store.domain.AppViewHistoryModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @Keep
 @Serializable
-data class AppDto(
+data class AppViewHistoryDto(
     @SerialName("AppID")
     @SerializedName("AppID")
     val appId: Int,
@@ -53,23 +55,31 @@ data class AppDto(
     val editorChoice: Int,
     @SerialName("SimilarApps")
     @SerializedName("SimilarApps")
-    val similarApps: String?
+    val similarApps: String?,
+    @SerialName("viewed_at")
+    @SerializedName("viewed_at")
+    val viewedAt: String,
 ) {
-    fun toModel() = AppModel(
-        appId = appId,
-        name = appName,
-        rating = rating,
-        category = categories,
-        smallIconId = smallIconId,
-        bigIconId = bigIconId,
-        appCardScreenshotsIds = appCardScreenshotsIds?.split(",")?.map { it.toInt() },
-        downloads = downloads,
-        developerName = developerName,
-        developerId = developerId,
-        releaseDate = releaseDate,
-        ageRestriction = ageRestriction,
-        description = description,
-        editorChoice = editorChoice == 1,
-        similarApps = similarApps,
-    )
+    fun toModel(): AppViewHistoryModel {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS")
+        val dateTime: LocalDateTime = LocalDateTime.parse(viewedAt, formatter)
+        return AppViewHistoryModel(
+            appId = appId,
+            name = appName,
+            rating = rating,
+            category = categories,
+            smallIconId = smallIconId,
+            bigIconId = bigIconId,
+            appCardScreenshotsIds = appCardScreenshotsIds?.split(",")?.map { it.toInt() },
+            downloads = downloads,
+            developerName = developerName,
+            developerId = developerId,
+            releaseDate = releaseDate,
+            ageRestriction = ageRestriction,
+            description = description,
+            editorChoice = editorChoice == 1,
+            similarApps = similarApps,
+            viewedAt = dateTime
+        )
+    }
 }

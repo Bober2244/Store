@@ -1,5 +1,6 @@
 package dev.bober.store.presentation.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.bober.store.data.repository.AppsRepository

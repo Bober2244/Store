@@ -97,6 +97,4 @@ dependencies {
     //Coil
     implementation(libs.coil.compose)
     implementation(libs.coil.network)
-    //WorkManager
-    implementation(libs.work.manager)
 }

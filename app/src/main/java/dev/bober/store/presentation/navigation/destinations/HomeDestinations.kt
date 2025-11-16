@@ -15,3 +15,6 @@ data class HomeRoute(
 data class AppDetailsRoute(
     val app: AppModel
 )
+
+@Serializable
+object ProfileRoute

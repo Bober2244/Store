@@ -1,6 +1,6 @@
 package dev.bober.store.domain
 
-enum class DownloadingState {
+enum class SendingState {
     NONE,
     LOADING,
     ERROR,

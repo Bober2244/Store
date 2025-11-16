@@ -14,13 +14,12 @@ koin = "4.1.1"
 ksp = "2.3.2"
 kotlinSerialization = "1.9.0"
 retrofit = "3.0.0"
-loggingInterceptor = "4.12.0"
+loggingInterceptor = "5.3.0"
 composeNavigation = "2.9.6"
 kotlinxCorutuines = "1.10.2"
 dataStore = "1.1.7"
 showcase = "2.0.2"
 coil = "3.3.0"
-workManager = "2.11.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -62,8 +61,6 @@ showcase = { module = "com.canopas.intro-showcase-view:introshowcaseview", versi
 
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 coil-network = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
-
-work-manager = { module = "androidx.work:work-runtime-ktx", version.ref = "workManager" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

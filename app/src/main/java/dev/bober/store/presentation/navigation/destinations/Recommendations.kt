@@ -3,13 +3,7 @@ package dev.bober.store.presentation.navigation.destinations
 import kotlinx.serialization.Serializable
 
 @Serializable
-object OnboardingGraph
+object RecommendationsGraph
 
 @Serializable
-object OnboardingRoute
-
-@Serializable
-object RegistrationRoure
-
-@Serializable
-object LoginRoute
+object RecommendationsRoute

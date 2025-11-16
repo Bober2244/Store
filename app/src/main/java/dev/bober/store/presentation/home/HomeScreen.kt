@@ -2,6 +2,7 @@ package dev.bober.store.presentation.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,6 +23,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
@@ -30,6 +32,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedTextField
@@ -77,6 +80,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun HomeScreen(
     onAppClick: (AppModel) -> Unit,
+    onProfileClick: () -> Unit,
     selectedTag: String?,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = koinViewModel()
@@ -105,7 +109,15 @@ fun HomeScreen(
                         )
                     },
                     actions = {
-                        //TODO: profile icon
+                        Icon(
+                            imageVector = Icons.Outlined.AccountCircle,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .clip(CircleShape)
+                                .clickable {
+                                    onProfileClick()
+                                }
+                        )
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
                         containerColor = MaterialTheme.colorScheme.background
@@ -273,7 +285,7 @@ fun HomeScreen(
                                 )
                             ) {
                                 Text(
-                                    text = "Згрузить теги"
+                                    text = "Загрузить теги"
                                 )
                             }
                         }

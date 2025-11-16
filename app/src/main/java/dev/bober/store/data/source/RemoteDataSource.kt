@@ -24,7 +24,7 @@ class RemoteDataSource(
         search: String?,
         sort: String?,
         order: String?
-    ): Resource<AppsListDto?> = safeApiResponse {
+    ) = safeApiResponse {
         api.getApps(
             tag = tag,
             filter = filter,
@@ -32,6 +32,18 @@ class RemoteDataSource(
             sort = sort,
             order = order
         )
+    }
+
+    suspend fun getViewsHistory(token: String) = safeApiResponse {
+        api.viewsHistory(token)
+    }
+
+    suspend fun getDownloadsHistory(token: String) = safeApiResponse {
+        api.downloadsHistory(token)
+    }
+
+    suspend fun getSimilar(appId: Int) = safeApiResponse {
+        api.getSimilar(appId)
     }
 
     suspend fun getTags() = safeApiResponse {

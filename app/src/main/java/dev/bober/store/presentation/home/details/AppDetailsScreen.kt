@@ -83,6 +83,7 @@ fun AppDetailsScreen(
 
     LaunchedEffect(Unit) {
         delay(1000)
+        viewModel.saveAppId(app.appId)
         viewModel.appViewed(app.appId.toString(), token ?: "")
     }
 

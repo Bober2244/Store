@@ -17,10 +17,15 @@ import dev.bober.store.presentation.navigation.destinations.HomeRoute
 import dev.bober.store.presentation.navigation.destinations.LoginRoute
 import dev.bober.store.presentation.navigation.destinations.OnboardingGraph
 import dev.bober.store.presentation.navigation.destinations.OnboardingRoute
+import dev.bober.store.presentation.navigation.destinations.ProfileRoute
+import dev.bober.store.presentation.navigation.destinations.RecommendationsGraph
+import dev.bober.store.presentation.navigation.destinations.RecommendationsRoute
 import dev.bober.store.presentation.navigation.destinations.RegistrationRoure
 import dev.bober.store.presentation.onboarding.LoginScreen
 import dev.bober.store.presentation.onboarding.OnboardingScreen
 import dev.bober.store.presentation.onboarding.RegistrationScreen
+import dev.bober.store.presentation.profile.ProfileScreen
+import dev.bober.store.presentation.recommendations.RecommendationsScreen
 import dev.bober.store.presentation.utils.serializableNavType
 import kotlin.reflect.typeOf
 
@@ -61,12 +66,15 @@ fun NavGraphBuilder.homeGraph(
     navController: NavController
 ) {
     navigation<HomeGraph>(startDestination = HomeRoute()) {
-        composable<HomeRoute> {
-            val homeRoute = it.toRoute<HomeRoute>()
+        composable<HomeRoute> { stack ->
+            val homeRoute = stack.toRoute<HomeRoute>()
             HomeScreen(
                 selectedTag = homeRoute.selectedTag,
                 onAppClick = {
                     navController.navigate(AppDetailsRoute(it))
+                },
+                onProfileClick = {
+                    navController.navigate(ProfileRoute)
                 }
             )
         }
@@ -84,6 +92,18 @@ fun NavGraphBuilder.homeGraph(
                 }
             )
         }
+
+        composable<ProfileRoute>(
+            typeMap = mapOf(
+                typeOf<AppModel>() to serializableNavType<AppModel>()
+            )
+        ) {
+            ProfileScreen(
+                onAppClick = {
+                    navController.navigate(AppDetailsRoute(it))
+                }
+            )
+        }
     }
 }
 
@@ -95,6 +115,27 @@ fun NavGraphBuilder.categoriesGraph(
             CategoriesScreen(
                 onCategoryClick = {
                     navController.navigate(HomeRoute(it))
+                }
+            )
+        }
+    }
+}
+
+fun NavGraphBuilder.recommendationsGraph(
+    navController: NavController
+) {
+    navigation<RecommendationsGraph>(startDestination = RecommendationsRoute) {
+        composable<RecommendationsRoute>(
+            typeMap = mapOf(
+                typeOf<AppModel>() to serializableNavType<AppModel>()
+            )
+        ) {
+            RecommendationsScreen(
+                onProfileClick = {
+                    navController.navigate(ProfileRoute)
+                },
+                onAppClick = {
+                    navController.navigate(AppDetailsRoute(it))
                 }
             )
         }

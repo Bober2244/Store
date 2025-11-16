@@ -32,6 +32,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedTextField
@@ -79,6 +80,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun HomeScreen(
     onAppClick: (AppModel) -> Unit,
+    onProfileClick: () -> Unit,
     selectedTag: String?,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = koinViewModel()
@@ -111,8 +113,9 @@ fun HomeScreen(
                             imageVector = Icons.Outlined.AccountCircle,
                             contentDescription = null,
                             modifier = Modifier
+                                .clip(CircleShape)
                                 .clickable {
-                                    //TODO: Open profile
+                                    onProfileClick()
                                 }
                         )
                     },

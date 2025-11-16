@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class AppDetailsViewModel(
     private val appRepository: AppsRepository,
-    dataStore: DataStoreManager,
+    private val dataStore: DataStoreManager,
 ): ViewModel() {
     val mutableDownloadingState = MutableStateFlow(SendingState.NONE)
     val downloadingState = mutableDownloadingState.asStateFlow()
@@ -27,6 +27,12 @@ class AppDetailsViewModel(
             started = SharingStarted.WhileSubscribed(),
             initialValue = "",
         )
+
+    fun saveAppId(appId: Int) {
+        viewModelScope.launch {
+            dataStore.saveInt(Constants.LAST_APP_ID, appId)
+        }
+    }
 
     fun downloadApp(context: Context, appId: String, fileName: String, token: String) {
         viewModelScope.launch(Dispatchers.IO) {

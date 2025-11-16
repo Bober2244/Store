@@ -3,6 +3,7 @@ package dev.bober.store.presentation.navigation.destinations
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Category
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.ThumbUp
 import androidx.compose.ui.graphics.vector.ImageVector
 import kotlinx.serialization.Serializable
 
@@ -13,4 +14,5 @@ enum class AppDestinations(
 ) {
     HOME("Главная", Icons.Outlined.Home, HomeGraph),
     CATEGORIES("Категории", Icons.Outlined.Category, CategoriesGraph),
+    RECOMMENDATIONS("Рекомендации", Icons.Outlined.ThumbUp, RecommendationsGraph)
 }

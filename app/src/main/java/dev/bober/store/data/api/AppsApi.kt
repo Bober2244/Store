@@ -1,6 +1,8 @@
 package dev.bober.store.data.api
 
+import dev.bober.store.data.dto.apps.AppsDownloadHistoryDto
 import dev.bober.store.data.dto.apps.AppsListDto
+import dev.bober.store.data.dto.apps.AppsViewHistoryDto
 import dev.bober.store.data.dto.apps.TagDto
 import retrofit2.Response
 import retrofit2.http.GET
@@ -33,4 +35,19 @@ interface AppsApi {
         @Header("Authorization") token: String,
         @Path("app_id") appId: String
     ): Response<Unit>
+
+    @GET("/api/auth/history/downloads")
+    suspend fun downloadsHistory(
+        @Header("Authorization") token: String
+    ): Response<AppsDownloadHistoryDto>
+
+    @GET("/api/auth/history/views")
+    suspend fun viewsHistory(
+        @Header("Authorization") token: String
+    ): Response<AppsViewHistoryDto>
+
+    @GET("/api/apps/{app_id}/similar")
+    suspend fun getSimilar(
+        @Path("app_id") appId: Int
+    ): Response<AppsListDto>
 }

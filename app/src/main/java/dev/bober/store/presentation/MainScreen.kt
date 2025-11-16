@@ -38,6 +38,7 @@ import dev.bober.store.presentation.navigation.destinations.HomeGraph
 import dev.bober.store.presentation.navigation.destinations.OnboardingGraph
 import dev.bober.store.presentation.navigation.homeGraph
 import dev.bober.store.presentation.navigation.onboardingGraph
+import dev.bober.store.presentation.navigation.recommendationsGraph
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -142,6 +143,9 @@ fun MainScreen(
                 navController = navController
             )
             categoriesGraph(
+                navController = navController
+            )
+            recommendationsGraph(
                 navController = navController
             )
         }

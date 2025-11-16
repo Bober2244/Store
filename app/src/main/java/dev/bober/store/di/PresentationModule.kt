@@ -5,6 +5,8 @@ import dev.bober.store.presentation.categories.CategoriesViewModel
 import dev.bober.store.presentation.home.HomeViewModel
 import dev.bober.store.presentation.home.details.AppDetailsViewModel
 import dev.bober.store.presentation.onboarding.OnboardingViewModel
+import dev.bober.store.presentation.profile.ProfileViewModel
+import dev.bober.store.presentation.recommendations.RecommendationsViewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
@@ -14,4 +16,6 @@ val presentationModule = module {
     viewModelOf(::AppDetailsViewModel)
     viewModelOf(::CategoriesViewModel)
     viewModelOf(::OnboardingViewModel)
+    viewModelOf(::ProfileViewModel)
+    viewModelOf(::RecommendationsViewModel)
 }

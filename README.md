@@ -98,3 +98,8 @@
 │   ├── theme/           # Цвета, темы, типографика (Theme.kt, Color.kt)<br>
 │   └── utils/           # Утилиты для UI (shimmerEffect, serializableNavType)<br>
 └── utils/               # Общие константы (Constants.kt)
+
+## Видео с работой приложения
+
+https://github.com/user-attachments/assets/3ab2d3cd-ed93-4de3-8424-6963451b0554
+
